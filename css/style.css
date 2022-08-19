@@ -1,4 +1,15 @@
-background: green;
+
+body{
+    background: #031100;
+background: -moz-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
+background: -webkit-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
+background: linear-gradient(to right, #031100 0%, #0E3700 69%, #106800 100%);
+}
 h1{
     color: rgb(45, 45, 233); 
+}
+
+p{
+     color: white;
+     size: 3px;
 }
