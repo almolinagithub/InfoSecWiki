@@ -1,26 +1,88 @@
 
-/*body{
-    background: #031100;
-background: -moz-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
-background: -webkit-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
-background: linear-gradient(to right, #031100 0%, #0E3700 69%, #106800 100%);
-}*/
+body{
+    background: rgb(11,36,0);
+    background: -moz-linear-gradient(90deg, rgba(11,36,0,1) 72%, rgba(0,94,21,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(11,36,0,1) 72%, rgba(0,94,21,1) 100%);
+    background: linear-gradient(90deg, rgba(11,36,0,1) 72%, rgba(0,94,21,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b2400",endColorstr="#005e15",GradientType=1);
+}
+
 h1{
-    color: rgb(20, 20, 156); 
+    color: rgb(255, 255, 255); 
+    font-size: 3vw;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2vw;
 }
 
 h2{
-    color: rgb(55, 55, 146);
+    color: #dbe7e8;
+    font-size: 2.3vw;
     border: rgb(16, 7, 7);
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 2vw;
+}
+
+h3{
+    color: #ccecf0;
+    text-align: center;
+    font-size: 2vw;
+    font-family: 'Courier New', Courier, monospace;
+    padding: auto;
+    padding-bottom: 2vw;
+    padding-top: 1vw ;
+}
+
+h4{
+    color: #007ea7;
+    font-size: 1.6 vw;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 2vw;
 }
 
 p{
-     color: rgb(41, 14, 14);
-     size: 3px;
+     color: #CCDBDC;
+     font-size: 1.4vw;
+     font-family: 'Courier New', Courier, monospace;
+     line-height: 1.5vw;
+     padding-left: 5vw;
+     padding-right: 10vw;
+     padding-bottom: 2.5vw;
+     
 }
 
 table{
-    color: rgb(29, 124, 124);
+    color: rgb(156, 200, 184);
+    font-family: 'Courier New', Courier, monospace;
+    text-size-adjust: 1.5vw ;
+    padding: 3vw;
+    padding-right: 5vw;
+    align-content: center;
+    padding-left: 10vw;
+    padding-right: 15vw;
+    text-align: lefts;
 }
+
+th, td {
+    padding: 1vw;
+    text-align: left;
+    border-bottom: 1px solid rgb(155, 155, 150);
+  }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 2vw;
+  }
+
+#cli {
+    color: rgb(57, 175, 36);
+    size: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 8vw;
+    font-weight: bolder;
+    text-align: left;

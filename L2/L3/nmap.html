@@ -11,30 +11,27 @@
     <h1>NMap</h1>
     <h2>nmap useful scans and tips</h2>
 </p>
-<p>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by argument..">
-</p>
     <p>
        <h3>Scan Network Range</h3>
-            <p>sudo nmap [networkaddress]/24 -sn -oA tnet | grep for | cut -d" " -f5</p>
+            <p id="cli">sudo nmap [networkaddress]/24 -sn -oA tnet | grep for | cut -d" " -f5</p>
             <p> if an IP list has to be scanned include the ".lst" file with the IPs and use the "-iL" switch</p>
             <p>Used Scanning Options : -sn	-oA tnet	-iL hosts.lst</p>
             <p>Only works id the hosts can reply to ICMP</p>
             <p></p>
         <h3>Scan multiple addresses</h3>
-        <p>
+        <p id="cli">
             sudo nmap -sn -oA tnet [ip][ip][ip]| grep for | cut -d" " -f5
         </p>
         <p>
             Another way to determine why Nmap has our target marked as "alive" is with the "--reason" option.
         </p>
-        <p>
+        <p id="cli">
             sudo nmap [ip] -sn -oA host -PE --reason 
         </p>
         <p>
             Nmap does indeed detect whether the host is alive or not through the ARP request and ARP reply alone. To disable ARP requests and scan our target with the desired ICMP echo requests, we can disable ARP pings by setting the "--disable-arp-ping" option.
         </p>
-        <p>
+        <p id="cli">
             sudo nmap [ip] -sn -oA host -PE --packet-trace --disable-arp-ping 
         </p>
 
@@ -59,7 +56,7 @@
     <p>
         We can define the ports one by one (-p 22,25,80,139,445), by range (-p 22-445), by top ports (--top-ports=10) from the Nmap database that have been signed as most frequent, by scanning all ports (-p-) but also by defining a fast port scan, which contains top 100 ports (-F). 
     </p>
-        <p></p>
+   
     <h2>Saving the Results in different formats </h2>
             
         <p>
@@ -68,21 +65,22 @@
             Normal output (-oN) with the .nmap file extension
             Grepable output (-oG) with the .gnmap file extension
             XML output (-oX) with the .xml file extension
-       
         </p>
         <p>
             <h3>Style sheets</h3>
+            <p>
             With the XML output, we can easily create HTML reports that are easy to read, even for non-technical people. This is later very useful for documentation, as it presents our results in a detailed and clear way. To convert the stored results from XML format to HTML, we can use the tool xsltproc.
-            <p></p>
-            <p>xsltproc target.xml -o target.html</p>
-            <img src="nmaphtml.png" alt="nmap html scan file">
+            </p>    
+            
+            <p id="cli">xsltproc target.xml -o target.html</p>
+            <img src="nmaphtml.png" alt="nmap html scan file" class="center">>
         </p>
 
         <h3>Service version detection</h3>
             <p>
                 It is recommended to perform a quick port scan first, which gives us a small overview of the available ports. This causes significantly less traffic, which is advantageous for us because otherwise we can be discovered and blocked by the security mechanisms. We can deal with these first and run a port scan in the background, which shows all open ports (-p-). We can use the version scan to scan the specific ports for services and their versions (-sV).
             </p>
-            <p>
+            <p id="cli">
                 sudo nmap [IP] -p- -sV
             </p>
             <p>
@@ -97,10 +95,10 @@
                     <p>
                         It is also possible to remove or manipulate the banners from the respective services. If we manually connect to the SMTP server using nc, grab the banner, and intercept the network traffic using tcpdump, we can see what Nmap did not show us.
                     </p>
-                    <p>
-                       TCPDUMP: sudo tcpdump -i eth0 host [sourceip] and [destip]
+                    <p id="cli">
+                        sudo tcpdump -i eth0 host [sourceip] and [destip]
                     </p>
-                    <p>
+                    <p id="cli">
                         nc -nv [destip]
                     </p>
 
@@ -181,16 +179,20 @@
                 We have several ways to define the desired scripts in Nmap.
             </p>
             
-                <p>
-                    DEFAULT SCRIPTS: sudo nmap <target> -sC
-                    SPECIFIC CATEGORY: sudo nmap <target> --script <category></category>
-                    SPECIFIC: sudo nmap <target> --script <script-name>,<script-name>,...    
+                <p id="cli">
+                    DEFAULT SCRIPTS: sudo nmap [target] -sC
+                </p >
+                <p id="cli">
+                    SPECIFIC CATEGORY: sudo nmap [target] --script [scriptcategory]
                 </p>
-                <P></P>
+                <p id="cli">   
+                        SPECIFIC: sudo nmap [target] --script [scriptname]
+                </p>
+              
                 <p>
                     Nmap also gives us the ability to scan our target with the aggressive option (-A). This scans the target with multiple options as service detection (-sV), OS detection (-O), traceroute (--traceroute), and with the default NSE scripts (-sC).
-                    <p></p>
-                    <img src="Screenshot2.png" alt="nmap aggressive scan">
+                  
+                    <img src="Screenshot2.png" alt="nmap aggressive scan" class="center">>
                 </p>
 
 
