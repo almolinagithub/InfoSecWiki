@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>NMap</h1>
-    <h2>a selection of the most useful hacking tricks</h2>
+    <h2>nmap useful scans and tips</h2>
 </p>
 <p>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by argument..">
@@ -22,11 +22,21 @@
             <p>Only works id the hosts can reply to ICMP</p>
             <p></p>
         <h3>Scan multiple addresses</h3>
-        <p>sudo nmap -sn -oA tnet [ip][ip][ip]| grep for | cut -d" " -f5</p>
-        <p>Another way to determine why Nmap has our target marked as "alive" is with the "--reason" option.</p>
-        <p>sudo nmap [ip] -sn -oA host -PE --reason </p>
-        <p>Nmap does indeed detect whether the host is alive or not through the ARP request and ARP reply alone. To disable ARP requests and scan our target with the desired ICMP echo requests, we can disable ARP pings by setting the "--disable-arp-ping" option.</p>
-        <p>sudo nmap [ip] -sn -oA host -PE --packet-trace --disable-arp-ping </p>
+        <p>
+            sudo nmap -sn -oA tnet [ip][ip][ip]| grep for | cut -d" " -f5
+        </p>
+        <p>
+            Another way to determine why Nmap has our target marked as "alive" is with the "--reason" option.
+        </p>
+        <p>
+            sudo nmap [ip] -sn -oA host -PE --reason 
+        </p>
+        <p>
+            Nmap does indeed detect whether the host is alive or not through the ARP request and ARP reply alone. To disable ARP requests and scan our target with the desired ICMP echo requests, we can disable ARP pings by setting the "--disable-arp-ping" option.
+        </p>
+        <p>
+            sudo nmap [ip] -sn -oA host -PE --packet-trace --disable-arp-ping 
+        </p>
 
     <table>
         <th align="left">State</th><th align="left">Description</th>
@@ -50,7 +60,142 @@
         We can define the ports one by one (-p 22,25,80,139,445), by range (-p 22-445), by top ports (--top-ports=10) from the Nmap database that have been signed as most frequent, by scanning all ports (-p-) but also by defining a fast port scan, which contains top 100 ports (-F). 
     </p>
         <p></p>
+    <h2>Saving the Results in different formats </h2>
+            
+        <p>
+           While we run various scans, we should always save the results. We can use these later to examine the differences between the different scanning methods we have used. Nmap can save the results in 3 different formats.
+
+            Normal output (-oN) with the .nmap file extension
+            Grepable output (-oG) with the .gnmap file extension
+            XML output (-oX) with the .xml file extension
+       
+        </p>
+        <p>
+            <h3>Style sheets</h3>
+            With the XML output, we can easily create HTML reports that are easy to read, even for non-technical people. This is later very useful for documentation, as it presents our results in a detailed and clear way. To convert the stored results from XML format to HTML, we can use the tool xsltproc.
+            <p></p>
+            <p>xsltproc target.xml -o target.html</p>
+            <img src="nmaphtml.png" alt="nmap html scan file">
+        </p>
+
+        <h3>Service version detection</h3>
+            <p>
+                It is recommended to perform a quick port scan first, which gives us a small overview of the available ports. This causes significantly less traffic, which is advantageous for us because otherwise we can be discovered and blocked by the security mechanisms. We can deal with these first and run a port scan in the background, which shows all open ports (-p-). We can use the version scan to scan the specific ports for services and their versions (-sV).
+            </p>
+            <p>
+                sudo nmap [IP] -p- -sV
+            </p>
+            <p>
+                To view the scan status, we can press the [Space Bar] during the scan, which will cause Nmap to show us the scan status.
+            </p>
+            <p>
+                Another option (--stats-every=5s) that we can use is defining how periods of time the status should be shown
+            </p>
+
+            <h3>tip</h3>
+                <h4>nmap is not all what we need!</h4>
+                    <p>
+                        It is also possible to remove or manipulate the banners from the respective services. If we manually connect to the SMTP server using nc, grab the banner, and intercept the network traffic using tcpdump, we can see what Nmap did not show us.
+                    </p>
+                    <p>
+                       TCPDUMP: sudo tcpdump -i eth0 host [sourceip] and [destip]
+                    </p>
+                    <p>
+                        nc -nv [destip]
+                    </p>
+
+        <h2>namp scritping engine</h2>
+
+        <p>Nmap Scripting Engine (<code>NSE</code>) is another handy feature of <code>Nmap</code>. It provides us with the possibility to create scripts in Lua for interaction with certain services. There are a total of 14 categories into which these scripts can be divided:
+        </p>           
+
+        <table class="table table-striped text-left">
+            <thead>
+            <tr>
+            <th><strong>Category</strong></th>
+            <th><strong>Description</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><code>auth</code></td>
+            <td>Determination of authentication credentials.</td>
+            </tr>
+            <tr>
+            <td><code>broadcast</code></td>
+            <td>Scripts, which are used for host discovery by broadcasting and the discovered hosts, can be automatically added to the remaining scans.</td>
+            </tr>
+            <tr>
+            <td><code>brute</code></td>
+            <td>Executes scripts that try to log in to the respective service by brute-forcing with credentials.</td>
+            </tr>
+            <tr>
+            <td><code>default</code></td>
+            <td>Default scripts executed by using the <code>-sC</code> option.</td>
+            </tr>
+            <tr>
+            <td><code>discovery</code></td>
+            <td>Evaluation of accessible services.</td>
+            </tr>
+            <tr>
+            <td><code>dos</code></td>
+            <td>These scripts are used to check services for denial of service vulnerabilities and are used less as it harms the services.</td>
+            </tr>
+            <tr>
+            <td><code>exploit</code></td>
+            <td>This category of scripts tries to exploit known vulnerabilities for the scanned port.</td>
+            </tr>
+            <tr>
+            <td><code>external</code></td>
+            <td>Scripts that use external services for further processing.</td>
+            </tr>
+            <tr>
+            <td><code>fuzzer</code></td>
+            <td>This uses scripts to identify vulnerabilities and unexpected packet handling by sending different fields, which can take much time.</td>
+            </tr>
+            <tr>
+            <td><code>intrusive</code></td>
+            <td>Intrusive scripts that could negatively affect the target system.</td>
+            </tr>
+            <tr>
+            <td><code>malware</code></td>
+            <td>Checks if some malware infects the target system.</td>
+            </tr>
+            <tr>
+            <td><code>safe</code></td>
+            <td>Defensive scripts that do not perform intrusive and destructive access.</td>
+            </tr>
+            <tr>
+            <td><code>version</code></td>
+            <td>Extension for service detection.</td>
+            </tr>
+            <tr>
+            <td><code>vuln</code></td>
+            <td>Identification of specific vulnerabilities.</td>
+            </tr>
+            </tbody>
+            </table>
+         
+
+            <p>
+                We have several ways to define the desired scripts in Nmap.
+            </p>
+            
+                <p>
+                    DEFAULT SCRIPTS: sudo nmap <target> -sC
+                    SPECIFIC CATEGORY: sudo nmap <target> --script <category></category>
+                    SPECIFIC: sudo nmap <target> --script <script-name>,<script-name>,...    
+                </p>
+                <P></P>
+                <p>
+                    Nmap also gives us the ability to scan our target with the aggressive option (-A). This scans the target with multiple options as service detection (-sV), OS detection (-O), traceroute (--traceroute), and with the default NSE scripts (-sC).
+                    <p></p>
+                    <img src="Screenshot2.png" alt="nmap aggressive scan">
+                </p>
+
+
         <h3>Link to more hosts discovery strategies</h3>
         <a href="https://nmap.org/book/host-discovery-strategies.html">https://nmap.org/book/host-discovery-strategies.html</a>
+        
     </body>
 </html>

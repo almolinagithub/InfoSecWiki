@@ -1,15 +1,26 @@
 
-body{
+/*body{
     background: #031100;
 background: -moz-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
 background: -webkit-linear-gradient(left, #031100 0%, #0E3700 69%, #106800 100%);
 background: linear-gradient(to right, #031100 0%, #0E3700 69%, #106800 100%);
-}
+}*/
 h1{
-    color: rgb(45, 45, 233); 
+    color: rgb(20, 20, 156); 
+    text-align: center;
+}
+
+h2{
+    color: rgb(55, 55, 146);
+    border: rgb(16, 7, 7);
+    text-align: center;
 }
 
 p{
-     color: white;
+     color: rgb(41, 14, 14);
      size: 3px;
+}
+
+table{
+    color: rgb(29, 124, 124);
 }
