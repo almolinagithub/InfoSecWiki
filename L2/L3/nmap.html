@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://almolinagithub.github.io/InfoSecWiki/css/style.css">
     <title>Nmap</title>
+    /*/css/style.css*/
+    /**/
 </head>
 <body>
     <h1>NMap</h1>
@@ -34,7 +36,7 @@
         <p id="cli">
             sudo nmap [ip] -sn -oA host -PE --packet-trace --disable-arp-ping 
         </p>
-
+<hr>
     <table>
         <th align="left">State</th><th align="left">Description</th>
         <tr><td>open</td><td>This indicates that the connection to the scanned port has been established. These connections can be TCP connections, UDP datagrams as well as SCTP associations.</td></tr>
@@ -56,7 +58,7 @@
     <p>
         We can define the ports one by one (-p 22,25,80,139,445), by range (-p 22-445), by top ports (--top-ports=10) from the Nmap database that have been signed as most frequent, by scanning all ports (-p-) but also by defining a fast port scan, which contains top 100 ports (-F). 
     </p>
-   
+   <hr>
     <h2>Saving the Results in different formats </h2>
             
         <p>
@@ -101,7 +103,7 @@
                     <p id="cli">
                         nc -nv [destip]
                     </p>
-
+<hr>
         <h2>namp scritping engine</h2>
 
         <p>Nmap Scripting Engine (<code>NSE</code>) is another handy feature of <code>Nmap</code>. It provides us with the possibility to create scripts in Lua for interaction with certain services. There are a total of 14 categories into which these scripts can be divided:
@@ -195,9 +197,13 @@
                     <img src="Screenshot2.png" alt="nmap aggressive scan" class="center">>
                 </p>
 
+    
+    </body>
+
+    <footer>
 
         <h3>Link to more hosts discovery strategies</h3>
         <a href="https://nmap.org/book/host-discovery-strategies.html">https://nmap.org/book/host-discovery-strategies.html</a>
-        
-    </body>
+    
+    </footer>  
 </html>
