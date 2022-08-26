@@ -53,7 +53,7 @@ p{
      
 }
 
-table{
+table.normale {
     color: rgb(156, 200, 184);
     font-family: 'Courier New', Courier, monospace;
     text-size-adjust: 1.5vw ;
@@ -64,6 +64,10 @@ table{
     padding-right: 15vw;
     text-align: lefts;
 }
+
+table.main_trick_selection {
+    text-align: center;
+}   
 
 th, td {
     padding: 1vw;
@@ -95,3 +99,103 @@ footer {
     background-color: #45a1ff;
     color: #fff;
 }
+
+
+/* CSS */
+.button-37 {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
+button.btn1 {
+    background: #40c754;
+    background-image: -webkit-linear-gradient(top, #40c754, #062233);
+    background-image: -moz-linear-gradient(top, #40c754, #062233);
+    background-image: -ms-linear-gradient(top, #40c754, #062233);
+    background-image: -o-linear-gradient(top, #40c754, #062233);
+    background-image: linear-gradient(to bottom, #40c754, #062233);
+    -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+    border-radius: 12px;
+    text-shadow: 1px 1px 3px #666666;
+    -webkit-box-shadow: 7px 4px 8px #666666;
+    -moz-box-shadow: 7px 4px 8px #666666;
+    box-shadow: 7px 4px 8px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 40px 40px 40px 40px;
+    border: solid #4c5c66 4px;
+    text-decoration: none;
+  }
+  
+  button.btn1:hover {
+    background: #e0ed7c;
+    background-image: -webkit-linear-gradient(top, #e0ed7c, #79bd89);
+    background-image: -moz-linear-gradient(top, #e0ed7c, #79bd89);
+    background-image: -ms-linear-gradient(top, #e0ed7c, #79bd89);
+    background-image: -o-linear-gradient(top, #e0ed7c, #79bd89);
+    background-image: linear-gradient(to bottom, #e0ed7c, #79bd89);
+    text-decoration: none;
+    padding: 40px 40px 40px 50px;
+  }
+
+  button.btn2 {
+    background: #c042c7;
+    background-image: -webkit-linear-gradient(top, #c042c7, #abc3d1);
+    background-image: -moz-linear-gradient(top, #c042c7, #abc3d1);
+    background-image: -ms-linear-gradient(top, #c042c7, #abc3d1);
+    background-image: -o-linear-gradient(top, #c042c7, #abc3d1);
+    background-image: linear-gradient(to bottom, #c042c7, #abc3d1);
+    -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+    border-radius: 12px;
+    text-shadow: 1px 1px 3px #666666;
+    -webkit-box-shadow: 7px 4px 8px #666666;
+    -moz-box-shadow: 7px 4px 8px #666666;
+    box-shadow: 7px 4px 8px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 40px 40px 40px 40px;
+    border: solid #4c5c66 4px;
+    text-decoration: none;
+  }
+  
+  button.btn2:hover {
+    background: #8d7ceb;
+    background-image: -webkit-linear-gradient(top, #8d7ceb, #1c4d27);
+    background-image: -moz-linear-gradient(top, #8d7ceb, #1c4d27);
+    background-image: -ms-linear-gradient(top, #8d7ceb, #1c4d27);
+    background-image: -o-linear-gradient(top, #8d7ceb, #1c4d27);
+    background-image: linear-gradient(to bottom, #8d7ceb, #1c4d27);
+    text-decoration: none;
+  }

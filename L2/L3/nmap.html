@@ -11,7 +11,8 @@
     <h1>NMap</h1>
     <h2>nmap useful scans and tips</h2>
 </p>
-    <p>
+
+    <button class="button-37" role="button">this is a button</button>
        <h3>Scan Network Range</h3>
             <p id="cli">sudo nmap [networkaddress]/24 -sn -oA tnet | grep for | cut -d" " -f5</p>
             <p> if an IP list has to be scanned include the ".lst" file with the IPs and use the "-iL" switch</p>
@@ -35,7 +36,7 @@
             sudo nmap [ip] -sn -oA host -PE --packet-trace --disable-arp-ping 
         </p>
 <hr>
-    <table>
+    <table class="normale">
         <th align="left">State</th><th align="left">Description</th>
         <tr><td>open</td><td>This indicates that the connection to the scanned port has been established. These connections can be TCP connections, UDP datagrams as well as SCTP associations.</td></tr>
         <tr><td>closed</td><td>	When the port is shown as closed, the TCP protocol indicates that the packet we received back contains an RST flag. This scanning method can also be used to determine if our target is alive or not.</td></tr>
@@ -107,7 +108,7 @@
         <p>Nmap Scripting Engine (<code>NSE</code>) is another handy feature of <code>Nmap</code>. It provides us with the possibility to create scripts in Lua for interaction with certain services. There are a total of 14 categories into which these scripts can be divided:
         </p>           
 
-        <table class="table table-striped text-left">
+        <table class="normale">
             <thead>
             <tr>
             <th><strong>Category</strong></th>
